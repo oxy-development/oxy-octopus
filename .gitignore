@@ -1,5 +1,8 @@
 # IntelliJ project files
+*.iml
 .idea/*
+*.ipr
+*.iws
 
 # Node stuff
 node_modules/*
