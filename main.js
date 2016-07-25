@@ -2,17 +2,32 @@ const electron = require('electron');
 const app = electron.app;  // Модуль контролирующей жизненный цикл нашего приложения.
 const BrowserWindow = electron.BrowserWindow;  // Модуль создающий браузерное окно.
 
-// Опционально возможность отправки отчета о ошибках на сервер проекта Electron.
+const React = require('react');
+const ReactDOM = require('react-dom');
+
+/*var Hello = React.createClass({
+    displayName: 'Hello',
+    render: function() {
+        return React.createElement('div', null, 'Hello ', this.props.name);
+    }
+});
+
+ReactDOM.render(
+    React.createElement(Hello, {name: 'React'}),
+    document.getElementById('container')
+);*/
+
+// Опционально возможность отправки отчета об ошибках на сервер проекта Electron.
 electron.crashReporter.start();
 
-// Определение глобальной ссылки , если мы не определим, окно
+// Определение глобальной ссылки, если мы не определим, окно
 // окно будет закрыто автоматически когда JavaScript объект будет очищен сборщиком мусора.
 var mainWindow = null;
 
 // Проверяем что все окна закрыты и закрываем приложение.
 app.on('window-all-closed', function() {
     // В OS X обычное поведение приложений и их menu bar
-    //  оставаться активными до тех пор пока пользователь закроет их явно комбинацией клавиш Cmd + Q
+    // оставаться активными до тех пор пока пользователь закроет их явно комбинацией клавиш Cmd + Q
     if (process.platform != 'darwin') {
         app.quit();
     }
