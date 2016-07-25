@@ -1,11 +1,13 @@
 {
-  "name"    : "electron-sample-app",
-  "version" : "0.0.1",
-  "main"    : "main.js",
-  "scripts" : {
-    "start" : "./node_modules/.bin/electron ."
+  "name": "electron-sample-app",
+  "version": "0.0.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "./node_modules/.bin/electron ."
   },
   "dependencies": {
-    "electron-prebuilt": "^0.35.2"
+    "electron-prebuilt": "^0.35.2",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
   }
 }
