@@ -40,7 +40,7 @@ app.on('ready', function() {
     mainWindow = new BrowserWindow({width: 800, height: 600});
 
     // и загружаем файл index.html нашего веб приложения.
-    mainWindow.loadURL('file://' + __dirname + '/index.html');
+    mainWindow.loadURL('file://' + __dirname + '/public/index.html');
 
     // Открываем DevTools.
     mainWindow.webContents.openDevTools();
