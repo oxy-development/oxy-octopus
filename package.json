@@ -5,7 +5,8 @@
   "scripts": {
     "start": "./node_modules/.bin/electron .",
     "watch": "./node_modules/.bin/webpack-dev-server --hot",
-    "electron-rebuild": "./node_modules/.bin/electron-rebuild"
+    "electron-rebuild": "./node_modules/.bin/electron-rebuild",
+    "package-linux-x64": "./node_modules/.bin/electron-packager . oxy-octopus --platform=linux --arch=x64"
   },
   "dependencies": {
     "electron-prebuilt": "^0.35.2",
