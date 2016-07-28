@@ -4,10 +4,12 @@
   "main": "main.js",
   "scripts": {
     "start": "./node_modules/.bin/electron .",
-    "watch": "./node_modules/.bin/webpack-dev-server --hot",
+    "make-clean": "rm -rf oxy-octopus-linux-x64 && rm -rf public/built",
+    "watch": "OXY_TARGET=development ./node_modules/.bin/webpack-dev-server --hot",
     "electron-rebuild": "./node_modules/.bin/electron-rebuild ",
     "build": "webpack",
-    "package-linux-x64": "./node_modules/.bin/electron-packager . oxy-octopus --platform=linux --arch=x64 --overwrite"
+    "assemple-linux-x64": "./node_modules/.bin/electron-packager . oxy-octopus --platform=linux --arch=x64 --overwrite",
+    "package-linux-x64": "OXY_TARGET=production npm run-script make-clean && npm run-script build && npm run-script assemple-linux-x64"
   },
   "dependencies": {
     "electron-prebuilt": "^0.35.2",

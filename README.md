@@ -1,15 +1,25 @@
 # oxy-octopus
 
-# Dev notes
+Running with webpack dev server
+-------------------------------
 
-to run webpack dev server:
+First, run webpack dev server:
 
-```
+``` shell
 npm run-script watch
 ```
 
-after run:
+To start electron app without assembly:
 
+``` shell
+npm run-script start
 ```
-npm start
+
+How to build
+------------
+
+To make a linux 64-bit package just do the following:   
+
+``` shell
+npm run-script package-linux-x64
 ```
