@@ -34,8 +34,7 @@ module.exports = {
 
     output: {
         path: './public/built',
-        filename: 'bundle.js',
-        publicPath: 'http://127.0.0.2:8080/built/'
+        filename: 'bundle.js'
     },
 
     devServer: {
