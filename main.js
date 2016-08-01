@@ -39,9 +39,8 @@ app.on('ready', function() {
     
     // import ProjectInstanceStub from "js/backend/backend_entry.js";
     'use strict';
-    var Project = require('./js/backend/backend_entry.js');
-    new Project().printHello();
-    // new ProjectInstanceStub('./main.js').printHello();
+    var Project = require('./backend/backend_entry.js');
+    new Project('./').printHello();
     
     // Создаем окно браузера.
     mainWindow = new BrowserWindow({
