@@ -10,6 +10,7 @@ class ProjectStub {
     constructor(path) {
         this.path = path;
         winston.add(winston.transports.File, { filename: this.path + 'temp/project-data.log' });
+        winston.remove(winston.transports.Console);
     }
 
     printHello () {
