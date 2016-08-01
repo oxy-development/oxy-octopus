@@ -44,10 +44,10 @@ app.on('ready', function() {
     
     // Создаем окно браузера.
     mainWindow = new BrowserWindow({
-        width: 800,
+        width: 1000,
         height: 600,
         //fullscreen: true,
-        frame: false,
+        frame: true,
         resizable: true
     });
 
