@@ -36,6 +36,13 @@ app.on('window-all-closed', function() {
 // Этот метод будет вызван когда Electron закончит инициализацию
 // и будет готов к созданию браузерных окон.
 app.on('ready', function() {
+    
+    // import ProjectInstanceStub from "js/backend/backend_entry.js";
+    'use strict';
+    var Project = require('./js/backend/backend_entry.js');
+    new Project().printHello();
+    // new ProjectInstanceStub('./main.js').printHello();
+    
     // Создаем окно браузера.
     mainWindow = new BrowserWindow({
         width: 800,
