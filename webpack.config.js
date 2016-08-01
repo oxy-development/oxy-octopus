@@ -5,7 +5,7 @@ const env = process.env;
 
 function getApp() {
 
-    const app = ['./javascripts/entry.js'];
+    const app = ['./frontend/entry.js'];
     if ('development' === env.OXY_TARGET) {
         app.push('webpack/hot/dev-server');
     }
@@ -28,7 +28,6 @@ function getPlugins() {
 module.exports = {
 
     entry: {
-        //app: ['webpack/hot/dev-server', './javascripts/entry.js'],
         app: getApp()
     },
 

@@ -14,7 +14,8 @@
   "dependencies": {
     "electron-prebuilt": "^0.35.2",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "winston": "^2.2.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",

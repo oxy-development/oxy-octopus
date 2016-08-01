@@ -1,6 +1,6 @@
+require('../less/main.less');
+
 import React from 'react';
-
-
 
 let Component = React.createElement;
 
@@ -18,8 +18,6 @@ export default React.createClass({
         )
     },
     render() {
-        return Component('div', {},
-            Component('header', {}, this.getBreadcrumbs())
-        )
+        return Component('div', {}, 'hello helloaaaaaaw')
     }
 })
