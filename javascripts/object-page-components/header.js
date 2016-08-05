@@ -2,19 +2,15 @@ import React from 'react';
 import File from '../header-components/file.js';
 
 let Component = React.createElement;
+let objectPageStrings = ['File', 'Edit', 'View', 'Navigate', 'Code', 'Refactor', 'Help'];
+let listItems = objectPageStrings.map(function(objectPageString){
+    return <li>{objectPageString}</li>;
+});
 
 export default React.createClass({
     displayName: 'objectPageHeader',
     getBreadcrumbs() {
-        return Component('ul', {},
-            Component('li', {}, 'File'),
-            Component('li', {}, 'Edit'),
-            Component('li', {}, 'View'),
-            Component('li', {}, 'Navigate'),
-            Component('li', {}, 'Code'),
-            Component('li', {}, 'Refactor'),
-            Component('li', {}, 'Help')
-        )
+        return Component('ul', {}, listItems)
     },
     render() {
         return Component('header', {}, this.getBreadcrumbs())
