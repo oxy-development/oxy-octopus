@@ -4,6 +4,7 @@
 
 'use strict';
 var winston = require('winston');
+var channel = require('./rpc-channel');
 
 class ProjectStub {
 
