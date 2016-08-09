@@ -8,13 +8,16 @@ var winston = require('winston');
 class ProjectStub {
 
     constructor(path) {
-        this.path = path;
-        winston.add(winston.transports.File, { filename: this.path + 'temp/project-data.log' });
+
+        this._path = path;
+        var self = this;
+        winston.add(winston.transports.File, { filename: self._path + '/' + 'project-data.log'});
         winston.remove(winston.transports.Console);
     }
 
     printHello () {
-        winston.log("Hello from backend", this.path);
+        console.log("Hello from backend", this._path);
+        winston.info("Hello from backend", this._path);
     }
 }
 
