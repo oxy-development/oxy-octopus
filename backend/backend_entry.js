@@ -3,15 +3,26 @@
  */
 
 'use strict';
-var winston = require('winston');
-var channel = require('./rpc-channel');
+const winston = require('winston');
+const RpcChannel = require('./rpc-channel');
 
 class ProjectStub {
 
     constructor(path) {
 
         this._path = path;
+        this._channel = new RpcChannel();
+
         var self = this;
+
+        this._channel.setupFunction('Test.echo', (message) => {
+            
+            winston.info('Inbound echo message:', message);
+            console.log('Inbound echo message:', message);
+            return message;
+        });
+
+
         winston.add(winston.transports.File, { filename: self._path + '/' + 'project-data.log'});
         winston.remove(winston.transports.Console);
     }
