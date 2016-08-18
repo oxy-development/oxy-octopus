@@ -15,14 +15,14 @@ class ProjectStub {
 
         var self = this;
 
-        this._channel.setupFunction('Test.echo', (message) => {
+        this._channel.setupFunction('Test.echo', (message, callback) => {
             
             winston.info('Inbound echo message:', message);
             console.log('Inbound echo message:', message);
-            return message;
+            callback().sendResult(message);
         });
-
-
+        
+        
         winston.add(winston.transports.File, { filename: self._path + '/' + 'project-data.log'});
         winston.remove(winston.transports.Console);
     }

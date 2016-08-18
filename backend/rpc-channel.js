@@ -7,28 +7,55 @@ const electron = require('electron');
 const ipcMain = electron.ipcMain;
 const winston = require('winston');
 
-class RpcChannel {
 
-    static jsonRpcError(code, message, id) {
+/**
+ * RPC reply callback object
+ */
+class RpcReplyCallback {
 
-        return JSON.stringify({
+    constructor(event, id) {
+        this._id = id;
+        this._event = event;
+    }
+
+
+    __send_reply(obj) {
+        this._event.sender.send('asynchronous-reply', JSON.stringify(obj));
+    }
+
+
+    /**
+     * Respond with something
+     * @param object {object}
+     */
+    sendResult(object) {
+
+        this.__send_reply({
+            result: object,
+            id: this._id,
+            jsonrpc: '2.0'
+        });
+    }
+    
+    
+    /**
+     * Respond with error
+     * @param code {number} error code
+     * @param message {string} error message
+     */
+    sendError(code, message) {
+
+        this.__send_reply({
             error: { code: code, message: message },
-            id: id,
+            id: this._id,
             jsonrpc: '2.0'
         });
     }
+}
 
 
-    static jsonRpcResult(result, id) {
-
-        return JSON.stringify({
-            result: result,
-            id: id,
-            jsonrpc: '2.0'
-        });
-    }
-
-
+class RpcChannel {
+    
     static linkToChannel(channel, handlers) {
 
         channel.on('asynchronous-message', (event, arg) => {
@@ -38,27 +65,27 @@ class RpcChannel {
                 const obj = JSON.parse(arg);
                 const f = handlers.get(obj.method);
 
+
                 if (f) {
 
                     try {
-                        result = RpcChannel.jsonRpcResult(f(obj.params), obj.id);
+                        f(obj.params, () => new RpcReplyCallback(event, obj.id));
                     } catch (err) {
 
                         winston.error(`Internal error on query: ${arg} - with error ${err}`);
-                        result = RpcChannel.jsonRpcError(-32603, 'Internal error', obj.id);
+                        new RpcReplyCallback(event, obj.id).sendError(-32603, 'Internal error');
                     }
 
                 } else {
                     winston.error(`Invalid inbound query: ${arg} - no method found`);
-                    result = RpcChannel.jsonRpcError(-32601, 'Method not found', obj.id)
+                    new RpcReplyCallback(event, obj.id).sendError(-32601, 'Method not found');
                 }
 
             } catch (error) {
-                result = RpcChannel.jsonRpcError(-32700, 'Parse error');
+
+                new RpcReplyCallback(event, event).sendError(-32700, 'Parse error');
                 winston.error(`Invalid inbound query: ${arg} - error: ${error}`);
             }
-
-            event.sender.send('asynchronous-reply', result)
         });
     }
 
