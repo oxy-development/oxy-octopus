@@ -77,20 +77,6 @@ class RpcChannel {
     setupFunction(name, f) {
         this._channelHandlers.set(name, f);
     }
-
-
-    /**
-     * This should be able to deliver asynchronous notification
-     * in JSON-RPC v2.0 manner
-     * @param name {string}
-     * @param data {object}
-     */
-    publishEvent(name, data) {
-
-        ipcMain.send('asynchronous-message', JSON.stringify({
-            name: name, params: data
-        }));
-    }
 }
 
 

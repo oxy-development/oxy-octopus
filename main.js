@@ -37,9 +37,9 @@ app.on('window-all-closed', function() {
 // и будет готов к созданию браузерных окон.
 app.on('ready', function() {
     
-    // import ProjectInstanceStub from "js/backend/backend_entry.js";
+    // import ProjectInstanceStub from "js/backend/backend-entry.js";
     'use strict';
-    var Project = require('./backend/backend_entry.js');
+    var Project = require('./backend/backend-entry.js');
     new Project('./temp').printHello();
     
     // Создаем окно браузера.
