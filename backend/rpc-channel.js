@@ -20,7 +20,7 @@ class RpcReplyCallback {
 
 
     __send_reply(obj) {
-        this._event.sender.send('asynchronous-reply', JSON.stringify(obj));
+        this._event.sender.send('asynchronous-reply', obj);
     }
 
 
@@ -62,7 +62,7 @@ class RpcChannel {
 
             let result = '';
             try {
-                const obj = JSON.parse(arg);
+                const obj = arg;
                 const f = handlers.get(obj.method);
 
 
