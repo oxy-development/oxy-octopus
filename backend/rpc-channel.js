@@ -17,13 +17,13 @@ class RpcReplyCallback {
         this._id = id;
         this._event = event;
     }
-
-
+    
+    
     __send_reply(obj) {
         this._event.sender.send('asynchronous-reply', obj);
     }
-
-
+    
+    
     /**
      * Respond with something
      * @param object {object}
@@ -59,8 +59,7 @@ class RpcChannel {
     static linkToChannel(channel, handlers) {
 
         channel.on('asynchronous-message', (event, arg) => {
-
-            let result = '';
+            
             try {
                 const obj = arg;
                 const f = handlers.get(obj.method);
