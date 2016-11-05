@@ -9,7 +9,9 @@
     "electron-rebuild": "./node_modules/.bin/electron-rebuild ",
     "build": "webpack",
     "assemple-linux-x64": "./node_modules/.bin/electron-packager . oxy-octopus --platform=linux --arch=x64 --overwrite",
-    "package-linux-x64": "OXY_TARGET=production npm run-script make-clean && npm run-script build && npm run-script assemple-linux-x64"
+    "assemple-mac-x64": "./node_modules/.bin/electron-packager . oxy-octopus --platform=mas --arch=x64 --overwrite",
+    "package-linux-x64": "OXY_TARGET=production npm run-script make-clean && npm run-script build && npm run-script assemple-linux-x64",
+    "package-mac-x64": "OXY_TARGET=production npm run-script make-clean && npm run-script build && npm run-script assemple-mac-x64"
   },
   "dependencies": {
     "electron-prebuilt": "^0.35.2",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "babel": "^6.5.2",
+    "babel-cli": "^6.16.0",
     "babel-core": "^6.11.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
